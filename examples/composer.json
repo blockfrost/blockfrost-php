@@ -4,9 +4,7 @@
 	},
 	"autoload" : {
 		"psr-4" : {
-			"OpenAPI\\Client\\Api\\" : "../blockfrost_api/open_api_derived/lib/Api",
-			"OpenAPI\\Client\\" : "../blockfrost_api/open_api_derived/lib/",
-			"Blockfrost\\" : "../blockfrost_api/services/"
+			"Blockfrost\\" 		  : "../blockfrost_api/"
 		}
 	},
 	"minimum-stability" : "dev"

@@ -19,11 +19,6 @@ class ComposerStaticInit9bbe39e12894a82b068f0a0890c790ed
             'Psr\\Http\\Message\\' => 17,
             'Psr\\Http\\Client\\' => 16,
         ),
-        'O' => 
-        array (
-            'OpenAPI\\Client\\Api\\' => 19,
-            'OpenAPI\\Client\\' => 15,
-        ),
         'G' => 
         array (
             'GuzzleHttp\\Psr7\\' => 16,
@@ -46,14 +41,6 @@ class ComposerStaticInit9bbe39e12894a82b068f0a0890c790ed
         array (
             0 => __DIR__ . '/..' . '/psr/http-client/src',
         ),
-        'OpenAPI\\Client\\Api\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/../blockfrost_api/open_api_derived/lib/Api',
-        ),
-        'OpenAPI\\Client\\' => 
-        array (
-            0 => __DIR__ . '/../..' . '/../blockfrost_api/open_api_derived/lib',
-        ),
         'GuzzleHttp\\Psr7\\' => 
         array (
             0 => __DIR__ . '/..' . '/guzzlehttp/psr7/src',
@@ -68,7 +55,7 @@ class ComposerStaticInit9bbe39e12894a82b068f0a0890c790ed
         ),
         'Blockfrost\\' => 
         array (
-            0 => __DIR__ . '/../..' . '/../blockfrost_api/services',
+            0 => __DIR__ . '/../..' . '/../blockfrost_api',
         ),
     );
 

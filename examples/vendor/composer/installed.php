@@ -27,7 +27,7 @@
             'aliases' => array(
                 0 => '7.4.x-dev',
             ),
-            'reference' => '74a8602c6faec9ef74b7a9391ac82c5e65b1cdab',
+            'reference' => '8d2ce4ed2e29c39be53e39701fa6641d0f125441',
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(
@@ -47,9 +47,9 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../guzzlehttp/psr7',
             'aliases' => array(
-                0 => '2.2.x-dev',
+                0 => '2.3.x-dev',
             ),
-            'reference' => 'f8ae7cb4c654e9d6f31c10271321ea99f7ca8ae9',
+            'reference' => '83260bb50b8fc753c72d14dc1621a2dac31877ee',
             'dev_requirement' => false,
         ),
         'psr/http-client' => array(
