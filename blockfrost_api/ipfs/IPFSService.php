@@ -4,6 +4,7 @@ namespace Blockfrost\IPFS;
 
 use Blockfrost\Service;
 use Psr\Http\Message\StreamInterface;
+use Blockfrost\Page;
 
 class IPFSService extends Service 
 {
@@ -33,9 +34,9 @@ class IPFSService extends Service
         return $this->resp_from_json($resp, '\Blockfrost\IPFS\IPFSPinChange');
     }
     
-    public function listPinnedObjects():array //<IPFSPinnedObject> //can return null apparently
+    public function listPinnedObjects(Page $page = null):array //<IPFSPinnedObject> //can return null apparently
     {
-        $resp = $this->get("/ipfs/pin/list");
+        $resp = $this->get("/ipfs/pin/list", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\IPFS\IPFSPinnedObject']);
     }

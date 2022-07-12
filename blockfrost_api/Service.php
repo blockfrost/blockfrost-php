@@ -16,7 +16,11 @@ abstract class Service
         //$configuration = new Configuration();
         
         $this->client = new \GuzzleHttp\Client([ 'headers' => [ "project_id" => $projectId]  ]);
+        
+        $this->throttler = Throttler::create(); 
     }
+    
+    private $throttler;
     
     private $network;
     private $projectId;
@@ -27,28 +31,46 @@ abstract class Service
     
     //---------- Rest interface methods ----------------------------------------
     
+    private function addQuery(string $endpoint, Page $page = null):string
+    {
+        if( ! $page )
+            return $endpoint;
+            
+        return $endpoint."?count=".$page->getCount()."&page=".$page->getPage()."&order=".$page->getOrder();
+    }
+    
     protected function getClient():\GuzzleHttp\Client
     {
         return $this->client;
     }
     
-    protected function get($endpoint):ResponseInterface
+    protected function get($endpoint, Page $page = null):ResponseInterface
     {
+        $endpoint = $this->addQuery($endpoint, $page);
+        
+        $this->throttler->next();
+        
         return $this->getClient()->request("GET", $this->network . $endpoint);
     }
     
     protected function post_void($endpoint):ResponseInterface
     {
+        $this->throttler->next();
+        
         return $this->getClient()->request("POST", $this->network . $endpoint);
     }
     
     protected function post_data($endpoint, $data, $headers = []):ResponseInterface
     {
+        $this->throttler->next();
+        
         return $this->getClient()->request("POST", $this->network . $endpoint, ['body' => $data, 'headers' => $headers] );
     }
     
     protected function post_file($endpoint, $name, StreamInterface $stream):ResponseInterface
     {
+        $this->throttler->next();
+        
         return $this->getClient()->request("POST", $this->network.$endpoint,
             [
                 'multipart' => [[
@@ -59,25 +81,6 @@ abstract class Service
             ]);
     }
     
-  /*  protected function object_from_json($jsonObj, string $className) //object or string
-    {
-        if( $className == "string" )
-            return $jsonObj;
-        
-        else
-        {
-            $instance = new $className;
-            
-            foreach ($jsonObj as $key => $val)
-            {
-                if( property_exists($instance, $key) )
-                    $instance->$key = $val;
-            }
-            
-            return $instance;
-        }
-    }*///what about Address.fromJson($json) 
-                
     private function object_from_json($json, $info) // [ [kind="array", type="Address"],                ['string'] 
     {
         $instance = null;

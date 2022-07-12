@@ -5,6 +5,7 @@ namespace Blockfrost\Epoch;
 
 
 use Blockfrost\Service;
+use Blockfrost\Page;
 
 class EpochsService extends Service 
 {
@@ -34,44 +35,44 @@ class EpochsService extends Service
         return $this->resp_from_json($resp, '\Blockfrost\Epoch\Epoch');
     }
     
-    public function getNextEpochs(int $number):array //<EpochContent>
+    public function getNextEpochs(int $number, Page $page = null):array //<EpochContent>
     {
-        $resp = $this->get("/epochs/{$number}/next");
+        $resp = $this->get("/epochs/{$number}/next", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Epoch\Epoch']);
     }
     
-    public function getPreviousEpochs(int $number):array //<EpochContent>
+    public function getPreviousEpochs(int $number, Page $page = null):array //<EpochContent>
     {
-        $resp = $this->get("/epochs/{$number}/previous");
+        $resp = $this->get("/epochs/{$number}/previous", $page); 
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Epoch\Epoch']);
     }
     
-    public function getStakeDistribution(int $number):array 
+    public function getStakeDistribution(int $number, Page $page = null):array 
     {
-        $resp = $this->get("/epochs/{$number}/stakes");
+        $resp = $this->get("/epochs/{$number}/stakes", page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Epoch\EpochStakeAndPool']);
     }
     
-    public function getStakeDistributionByPool(int $number, string $pool_id):array //<StakePoolContentInner>
+    public function getStakeDistributionByPool(int $number, string $pool_id, Page $page = null):array //<StakePoolContentInner>
     {
-        $resp = $this->get("/epochs/{$number}/stakes/{$pool_id}");
+        $resp = $this->get("/epochs/{$number}/stakes/{$pool_id}", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Epoch\EpochStake']);
     }
     
-    public function getBlockDistribution(int $number):array //<string>
+    public function getBlockDistribution(int $number, Page $page = null):array //<string>
     {
-        $resp = $this->get("/epochs/{$number}/blocks");
+        $resp = $this->get("/epochs/{$number}/blocks", $page);
         
         return $this->resp_from_json($resp, ['array', 'string']);
     }
     
-    public function getBlockDistributionByPool(int $number, string $pool_id):array //<string>
+    public function getBlockDistributionByPool(int $number, string $pool_id, Page $page = null):array //<string>
     {
-        $resp = $this->get("/epochs/{$number}/blocks/{$pool_id}");
+        $resp = $this->get("/epochs/{$number}/blocks/{$pool_id}", $page);
         
         return $this->resp_from_json($resp, ['array', 'string']);
     }
