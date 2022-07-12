@@ -5,6 +5,7 @@ namespace Blockfrost\Block;
 
 
 use Blockfrost\Service;
+use Blockfrost\Page;
 
 class BlockService extends Service 
 {
@@ -20,9 +21,9 @@ class BlockService extends Service
         return $this->resp_from_json($resp, '\Blockfrost\Block\BlockContent');
     }
     
-    public function getLatestBlockTransactions():array //<string>
+    public function getLatestBlockTransactions(Page $page = null):array //<string>
     {
-        $resp = $this->get("/blocks/latest/txs");
+        $resp = $this->get("/blocks/latest/txs", $page);
         
         return $this->resp_from_json($resp, ['array', 'string']);
     }
@@ -34,16 +35,16 @@ class BlockService extends Service
         return $this->resp_from_json($resp, '\Blockfrost\Block\BlockContent');
     }
     
-    public function listNextBlocks($hash_or_number):array  //<BlockContent>             
+    public function listNextBlocks($hash_or_number, Page $page = null):array  //<BlockContent>             
     {
-        $resp = $this->get("/blocks/{$hash_or_number}/next");
+        $resp = $this->get("/blocks/{$hash_or_number}/next", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Block\BlockContent' ]);
     }
     
-    public function listPreviousBlocks($hash_or_number):array //<BlockContent>
+    public function listPreviousBlocks($hash_or_number, Page $page = null):array //<BlockContent>
     {
-        $resp = $this->get("/blocks/{$hash_or_number}/previous");
+        $resp = $this->get("/blocks/{$hash_or_number}/previous", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Block\BlockContent'] );
     }
@@ -62,15 +63,15 @@ class BlockService extends Service
         return $this->resp_from_json($resp, '\Blockfrost\Block\BlockContent');
     }
     
-    public function getBlockTransactions($hash_or_number):array 
+    public function getBlockTransactions($hash_or_number, Page $page = null):array 
     {
-        $resp = $this->get("/blocks/{$hash_or_number}/txs");
+        $resp = $this->get("/blocks/{$hash_or_number}/txs", $page);
         
         return $this->resp_from_json($resp, ['array', 'string' ]);
     }
-    public function getAddressesAffectedInBlock($hash_or_number)//:array
+    public function getAddressesAffectedInBlock($hash_or_number, Page $page = null)//:array
     {
-        $resp = $this->get("/blocks/{$hash_or_number}/addresses");
+        $resp = $this->get("/blocks/{$hash_or_number}/addresses", $page);
         
         $t = ['array', '\Blockfrost\Block\BlockTransaction'];
         

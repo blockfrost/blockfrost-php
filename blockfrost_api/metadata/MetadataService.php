@@ -3,6 +3,7 @@
 namespace Blockfrost\Metadata;
 
 use Blockfrost\Service;
+use Blockfrost\Page;
 
 class MetadataService extends Service 
 {
@@ -11,24 +12,24 @@ class MetadataService extends Service
         parent::__construct($network, $projectId);
     }
     
-    public function getTransactionMetadataLabels():array 
+    public function getTransactionMetadataLabels(Page $page = null):array 
     {
-        $resp = $this->get("/metadata/txs/labels");
+        $resp = $this->get("/metadata/txs/labels", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Metadata\MetadataLabel']);
 
     }
     
-    public function getTransactionMetadataAsJSON(string $label):array //<TxMetadataLabelJsonInner>
+    public function getTransactionMetadataAsJSON(string $label, Page $page = null):array //<TxMetadataLabelJsonInner>
     {
-        $resp = $this->get("/metadata/txs/labels/{$label}");
+        $resp = $this->get("/metadata/txs/labels/{$label}", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Metadata\MetadataJSON']);
     }
     
-    public function getTransactionMetadataAsCBOR(string $label):array //<TxMetadataLabelCborInner>
+    public function getTransactionMetadataAsCBOR(string $label, Page $page = null):array //<TxMetadataLabelCborInner>
     {
-        $resp = $this->get("/metadata/txs/labels/{$label}/cbor");
+        $resp = $this->get("/metadata/txs/labels/{$label}/cbor", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Metadata\MetadataCBOR']);
     }

@@ -5,6 +5,7 @@ namespace Blockfrost\Address;
 
 
 use Blockfrost\Service;
+use Blockfrost\Page;
 
 class AddressesService extends Service 
 {
@@ -61,9 +62,9 @@ class AddressesService extends Service
             ] );
     }
     
-    public function getAddressUTXOs($address):array
+    public function getAddressUTXOs($address, Page $page = null):array
     {
-        $resp = $this->get("/addresses/{$address}/utxos");
+        $resp = $this->get("/addresses/{$address}/utxos", $page);
         
         $t = ['_kind' => 'object',
               '_type' => '\Blockfrost\Address\AddressTotal',
@@ -77,9 +78,9 @@ class AddressesService extends Service
         return $this->resp_from_json($resp, ['array', $t]);
     }
     
-    public function getAddressUTXOsOfAsset($address, $asset):array
+    public function getAddressUTXOsOfAsset($address, $asset, Page $page = null):array
     {
-        $resp = $this->get("/addresses/{$address}/utxos/{$asset}");
+        $resp = $this->get("/addresses/{$address}/utxos/{$asset}", $page);
         
         $t = ['_kind' => 'object',
             '_type' => '\Blockfrost\Address\AddressTotal',
@@ -93,9 +94,9 @@ class AddressesService extends Service
         return $this->resp_from_json($resp, ['array', $t]);
     }
     
-    public function getAddressTransactions($address):array
+    public function getAddressTransactions($address, Page $page = null):array
     {
-        $resp = $this->get("/addresses/{$address}/transactions");
+        $resp = $this->get("/addresses/{$address}/transactions", $page);
         
       
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Address\AddressTransaction']);

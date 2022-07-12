@@ -3,6 +3,7 @@
 namespace Blockfrost\Script;
 
 use Blockfrost\Service;
+use Blockfrost\Page;
 
 class ScriptsService extends Service 
 {
@@ -11,9 +12,9 @@ class ScriptsService extends Service
         parent::__construct($network, $projectId);
     }
     
-    public function getScripts():array //<ScriptsInner>
+    public function getScripts(Page $page = null):array //<ScriptsInner>
     {
-        $resp = $this->get("/scripts");
+        $resp = $this->get("/scripts", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Script\Script'] );
     }
@@ -39,9 +40,9 @@ class ScriptsService extends Service
         return $this->resp_from_json($resp, '\Blockfrost\Script\ScriptCBOR' );
     }
     
-    public function getScriptRedeemers(string $script_hash):array
+    public function getScriptRedeemers(string $script_hash, Page $page = null):array
     {
-        $resp = $this->get("/scripts/{$script_hash}/redeemers");
+        $resp = $this->get("/scripts/{$script_hash}/redeemers", $page);
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Script\ScriptRedeemer' ]);
     }
