@@ -14,7 +14,11 @@ class AddressesService extends Service
         parent::__construct($network, $projectId);
     }
     
-    public function getAddress($address):Address
+    /**Obtain information about a specific address.
+     * @param string $address
+     * @return Address
+     */
+    public function getAddress(string $address):Address
     {
         $resp = $this->get("/addresses/{$address}");
         
@@ -30,7 +34,11 @@ class AddressesService extends Service
             ] );
     }
     
-    public function getAddressExtended($address):AddressExtended
+    /**Obtain extended information about a specific address.
+     * @param string $address
+     * @return AddressExtended
+     */
+    public function getAddressExtended(string $address):AddressExtended
     {
         $resp = $this->get("/addresses/{$address}/extended");
         
@@ -46,7 +54,11 @@ class AddressesService extends Service
             ] );
     }
     
-    public function getAddressTotal($address):AddressTotal
+    /**Obtain extended information about a specific address
+     * @param string $address
+     * @return AddressTotal
+     */
+    public function getAddressTotal(string $address):AddressTotal
     {
         $resp = $this->get("/addresses/{$address}/total");
         
@@ -62,7 +74,12 @@ class AddressesService extends Service
             ] );
     }
     
-    public function getAddressUTXOs($address, Page $page = null):array
+    /**UTXOs of the address.
+     * @param string $address
+     * @param Page $page
+     * @return array
+     */
+    public function getAddressUTXOs(string $address, Page $page = null):array
     {
         $resp = $this->get("/addresses/{$address}/utxos", $page);
         
@@ -78,7 +95,13 @@ class AddressesService extends Service
         return $this->resp_from_json($resp, ['array', $t]);
     }
     
-    public function getAddressUTXOsOfAsset($address, $asset, Page $page = null):array
+    /**Address UTXOs of a given asset
+     * @param string $address
+     * @param string $asset
+     * @param Page $page
+     * @return array
+     */
+    public function getAddressUTXOsOfAsset(string $address, string $asset, Page $page = null):array
     {
         $resp = $this->get("/addresses/{$address}/utxos/{$asset}", $page);
         
@@ -94,9 +117,24 @@ class AddressesService extends Service
         return $this->resp_from_json($resp, ['array', $t]);
     }
     
-    public function getAddressTransactions($address, Page $page = null):array
+    /**Transactions on the address.
+     * @param string $address
+     * @param Page $page
+     * @param int $from
+     * @param int $to
+     * @return array
+     */
+    public function getAddressTransactions(string $address, Page $page = null, int $from = null, int $to = null):array //two more ints
     {
-        $resp = $this->get("/addresses/{$address}/transactions", $page);
+        $params = $from != null || $to != null? [] : null;
+        
+        if( $from )
+            $params["from"] = $from;
+        
+        if( $to ) 
+            $params["to"] = $to;
+        
+        $resp = $this->get("/addresses/{$address}/transactions", $page, $params);
         
       
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Address\AddressTransaction']);

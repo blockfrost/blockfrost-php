@@ -12,7 +12,11 @@ class TransactionsService extends Service
         parent::__construct($network, $projectId);
     }
     
-    public function getTransaction($hash):Transaction 
+    /**Return content of the requested transaction.
+     * @param string $hash
+     * @return Transaction
+     */
+    public function getTransaction(string $hash):Transaction 
     {
         $resp = $this->get("/txs/{$hash}");
         
@@ -23,7 +27,11 @@ class TransactionsService extends Service
             ] );
     }
     
-    public function getTransactionUTXOs($hash):TransactionUTXOs
+    /**Return the inputs and UTXOs of the specific transaction.
+     * @param string $hash
+     * @return TransactionUTXOs
+     */
+    public function getTransactionUTXOs(string $hash):TransactionUTXOs
     {
         $resp = $this->get("/txs/{$hash}/utxos");
         
@@ -45,35 +53,55 @@ class TransactionsService extends Service
             ] );
     }
     
-    public function getTransactionStakeAddressCertificates($hash):array
+    /**Obtain information about (de)registration of stake addresses within a transaction.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionStakeAddressCertificates(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/stakes");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionAddressCertificate'] );
     }
     
-    public function getTransactionDelegationCertificates($hash):array
+    /**Obtain information about delegation certificates of a specific transaction.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionDelegationCertificates(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/delegations");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionDelegationCertificate'] );
     }
     
-    public function getTransactionWithdrawals($hash):array
+    /**Obtain information about withdrawals of a specific transaction.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionWithdrawals(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/withdrawals");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionWithdrawal'] );
     }
     
-    public function getTransactionMIRs($hash):array
+    /**Obtain information about Move Instantaneous Rewards (MIRs) of a specific transaction.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionMIRs(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/mirs");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionMir'] );
     }
     
-    public function getTransactionStakePoolUpdateCertificates($hash):array
+    /**Obtain information about stake pool registration and update certificates of a specific transaction.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionStakePoolUpdateCertificates(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/pool_updates");
         
@@ -87,14 +115,22 @@ class TransactionsService extends Service
         return $this->resp_from_json($resp, ['array', $a] );
     }
     
-    public function getTransactionStakePoolRetirementCertificates($hash):array
+    /**Obtain information about stake pool retirements within a specific transaction.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionStakePoolRetirementCertificates(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/pool_retires");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionRetirementCertificate'] );
     }
     
-    public function getTransactionMetadata($hash):array
+    /**Obtain the transaction metadata.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionMetadata(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/metadata");
         
@@ -103,20 +139,32 @@ class TransactionsService extends Service
         
     }
     
-    public function getTransactionMetadataAsCBOR($hash):array
+    /**Obtain the transaction metadata in CBOR.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionMetadataAsCBOR(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/metadata/cbor");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionMetadataCBOR'] );
     }
     
-    public function getTransactionRedeemers($hash):array
+    /**Obtain the transaction redeemers.
+     * @param string $hash
+     * @return array
+     */
+    public function getTransactionRedeemers(string $hash):array
     {
         $resp = $this->get("/txs/{$hash}/redeemers");
         
         return $this->resp_from_json($resp, ['array', '\Blockfrost\Transaction\TransactionRedeemer'] );
     }
     
+    /**Submit an already serialized transaction to the network.
+     * @param StreamInterface $cbor
+     * @return string
+     */
     public function submitTransaction(StreamInterface $cbor):string 
     {
         $resp = $this->post_data("/tx/submit", $cbor, ["Content-Type" => "application/cbor"]);

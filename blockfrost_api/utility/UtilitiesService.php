@@ -12,6 +12,12 @@ class UtilitiesService extends Service
         parent::__construct($network, $projectId);
     }
     
+    /**Derive Shelley address from an xpub
+     * @param string $xpub
+     * @param int $role
+     * @param int $index
+     * @return UtilitiesAddress
+     */
     public function deriveAddress(string $xpub, int $role, int $index):UtilitiesAddress
     {
         $resp = $this->get("/utils/addresses/xpub/{$xpub}/{$role}/{$index}");
@@ -20,6 +26,10 @@ class UtilitiesService extends Service
     }
     
     
+    /**Submit an already serialized transaction to evaluate how much execution units it requires.
+     * @param StreamInterface $data
+     * @return string
+     */
     public function submitTransactionForEvaluation(StreamInterface $data):string
     {
         $resp = $this->post_data("/tx/submit", $data, ["Content-Type" => "application/cbor"]);

@@ -12,6 +12,9 @@ class LedgerService extends Service
         parent::__construct($network, $projectId);
     }
     
+    /**Return the information about blockchain genesis.
+     * @return LedgerGenesis
+     */
     public function getBlockchainGenesis():LedgerGenesis
     {
         $resp = $this->get("/genesis");

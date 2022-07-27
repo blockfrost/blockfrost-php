@@ -28,15 +28,42 @@ abstract class Service
     
     public static $NETWORK_IPFS            = "https://ipfs.blockfrost.io/api/v0";
     public static $NETWORK_CARDANO_MAINNET = "https://cardano-mainnet.blockfrost.io/api/v0";
+    public static $NETWORK_CARDANO_TESTNET = "https://cardano-testnet.blockfrost.io/api/v0";
+    
+    
     
     //---------- Rest interface methods ----------------------------------------
     
-    private function addQuery(string $endpoint, Page $page = null):string
+    private function addQuery(string $endpoint, Page $page = null, array $params = null):string
     {
-        if( ! $page )
+        if( ! $page && (! $params || count($params) == 0) )
             return $endpoint;
             
-        return $endpoint."?count=".$page->getCount()."&page=".$page->getPage()."&order=".$page->getOrder();
+        $out = $endpoint."?";
+        
+        $tail = false;
+        
+        if( $page )
+        {
+            $out .= "count=".$page->getCount()."&page=".$page->getPage()."&order=".$page->getOrder();
+            $tail = true;
+        }
+
+        if( $params )
+        {
+            foreach($params as $key => $value)
+            {
+                if( $tail )
+                    $out .= "&";
+                
+                $out .= $key . "=" . $value;
+                    
+                $tail = true;
+            }
+                
+        }
+        
+        return $out;
     }
     
     protected function getClient():\GuzzleHttp\Client
@@ -44,9 +71,9 @@ abstract class Service
         return $this->client;
     }
     
-    protected function get($endpoint, Page $page = null):ResponseInterface
+    protected function get($endpoint, Page $page = null, array $params = null):ResponseInterface
     {
-        $endpoint = $this->addQuery($endpoint, $page);
+        $endpoint = $this->addQuery($endpoint, $page, $params);
         
         $this->throttler->next();
         

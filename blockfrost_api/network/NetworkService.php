@@ -11,6 +11,9 @@ class NetworkService extends Service
         parent::__construct($network, $projectId);
     }
     
+    /**Return detailed network information.
+     * @return NetworkInformation
+     */
     public function getNetworkInformation():NetworkInformation
     {
         $resp = $this->get("/network");
