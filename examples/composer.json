@@ -1,4 +1,7 @@
 {
+	"name": "Blockfrost PHP SDK",
+	"description": "PHP api for Cardano/IPFS",
+
 	"require" : {
 		"guzzlehttp/guzzle" : "^7.0"
 	},
