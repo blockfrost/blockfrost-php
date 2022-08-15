@@ -1,5 +1,5 @@
 {
-	"name": "Blockfrost PHP SDK",
+	"name": "blockfrost/phpsdk",
 	"description": "PHP api for Cardano/IPFS",
 
 	"require" : {
