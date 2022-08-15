@@ -20,9 +20,7 @@ final class IPFSServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new IPFSService(IPFSService::$NETWORK_IPFS, $TEST_PROJECT_ID);
+        $this->service = new IPFSService(IPFSService::$NETWORK_IPFS, getenv('TEST_ID_IPFS') );
     }
     
     public function test_add_willReturn_ipfsObject():void

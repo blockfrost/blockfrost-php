@@ -13,9 +13,7 @@ final class AddressServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new AddressesService(AddressesService::$NETWORK_CARDANO_TESTNET, $TEST_PROJECT_ID);
+        $this->service = new AddressesService(AddressesService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET'));
     }
     
 
@@ -92,7 +90,7 @@ final class AddressServiceTest extends TestCase
 
     public function test_addressTransactions_willThrowAPIException_onNullAddress():void
     {
-        $this->expectExceptionMessage("Invalid address");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAddressTransactions(null, new Page(2, 1, "asc"), "8929261", "9999269");
         

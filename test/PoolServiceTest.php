@@ -25,9 +25,7 @@ final class PoolServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new PoolsService(MetadataService::$NETWORK_CARDANO_TESTNET, $TEST_PROJECT_ID);
+        $this->service = new PoolsService(MetadataService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     
     public function test_pool_willReturn_poolForPoolId():void

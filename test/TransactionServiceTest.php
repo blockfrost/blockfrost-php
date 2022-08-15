@@ -24,9 +24,7 @@ final class TransactionServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new TransactionsService(TransactionsService::$NETWORK_CARDANO_TESTNET, $TEST_PROJECT_ID);
+        $this->service = new TransactionsService(TransactionsService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     
     public function test_transaction_willReturn_transactionForAHash():void

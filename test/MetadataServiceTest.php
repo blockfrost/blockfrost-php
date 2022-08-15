@@ -19,9 +19,7 @@ final class MetadataServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new MetadataService(MetadataService::$NETWORK_CARDANO_TESTNET, $TEST_PROJECT_ID);
+        $this->service = new MetadataService(MetadataService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     
     

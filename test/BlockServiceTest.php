@@ -21,9 +21,7 @@ final class BlockServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new BlockService(AssetsService::$NETWORK_CARDANO_TESTNET, $TEST_PROJECT_ID);
+        $this->service = new BlockService(AssetsService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
    
     public function test_latestBlock_willReturn_latestBlock():void
@@ -198,7 +196,7 @@ final class BlockServiceTest extends TestCase
 
     public function test_nextBlocks_willThrowAPIException_onNullHash():void
     {
-        $this->expectExceptionMessage("Missing or malformed block hash");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->listNextBlocks(null, new Page(5, 1));
     }
@@ -245,7 +243,7 @@ final class BlockServiceTest extends TestCase
         
     public function test_previousBlocks_willThrowAPIException_onNullHash():void
     {
-        $this->expectExceptionMessage("Missing or malformed block hash");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->listPreviousBlocks(null, new Page(5, 1));
     }

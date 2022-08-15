@@ -1,7 +1,9 @@
 <?php
 
+//require_once __DIR__ . '/../examples/vendor/autoload.php';
+
 use PHPUnit\Framework\TestCase;
-use Blockfrost\AccountsService;
+use Blockfrost\Account\AccountsService;
 use Blockfrost\Page;
 use function PHPUnit\Framework\assertArrayHasKey;
 
@@ -14,9 +16,7 @@ final class AccountServiceTest extends TestCase
 
     public function setUp():void
     {
-        global $TEST_PROJECT_ID;
-        
-        $this->service = new AccountsService(AccountsService::$NETWORK_CARDANO_TESTNET, $TEST_PROJECT_ID);
+        $this->service = new AccountsService(AccountsService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     
   
@@ -63,7 +63,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_history_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid or malformed stake address format");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountHistory(null,  new Page(3, 1, "asc") );
     }
@@ -122,7 +122,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_delegationHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid or malformed stake address format");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountDelegationHistory(null,  new Page(3, 1, "asc") );
     }
@@ -144,7 +144,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_registrationHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid or malformed stake address format");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountRegistrationHistory(null, new Page(3, 1, "asc") );
     }
@@ -167,7 +167,7 @@ final class AccountServiceTest extends TestCase
   
     public function test_withdrawalHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid or malformed stake address format");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountWithdrawalHistory(null, new Page(3, 1) );
         
@@ -190,7 +190,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_mirHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid or malformed stake address format");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountMirHistory(null, new Page(3, 1) );
         
@@ -213,7 +213,7 @@ final class AccountServiceTest extends TestCase
     
     public function test_addresses_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid or malformed stake address format");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountAssociatedAddresses(null, new Page(3, 1)  );
 
@@ -238,7 +238,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_assets_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("Invalid path");
+        $this->expectExceptionMessage("must be of the type string");
         
         $this->service->getAccountAssociatedAssets(null, new Page(3, 1) );
         
