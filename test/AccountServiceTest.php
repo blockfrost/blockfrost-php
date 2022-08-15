@@ -1,6 +1,6 @@
 <?php
 
-//require_once __DIR__ . '/../examples/vendor/autoload.php';
+require_once __DIR__ . '/../examples/vendor/autoload.php';
 
 use PHPUnit\Framework\TestCase;
 use Blockfrost\Account\AccountsService;
