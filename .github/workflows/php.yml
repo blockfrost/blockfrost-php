@@ -31,6 +31,7 @@ jobs:
           ${{ runner.os }}-php-
 
     - name: Install dependencies
+      run: rm -Rf vendor
       run: composer install --prefer-dist --no-progress
       working-directory: examples
 
