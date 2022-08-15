@@ -1,22 +1,22 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => NULL,
-        'name' => '__root__',
+        'reference' => '11cfa36e77f023bb51d3d610662aeda874116ab2',
+        'name' => 'blockfrost/phpsdk',
         'dev' => true,
     ),
     'versions' => array(
-        '__root__' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
+        'blockfrost/phpsdk' => array(
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => NULL,
+            'reference' => '11cfa36e77f023bb51d3d610662aeda874116ab2',
             'dev_requirement' => false,
         ),
         'doctrine/instantiator' => array(
@@ -36,7 +36,7 @@
             'aliases' => array(
                 0 => '7.4.x-dev',
             ),
-            'reference' => 'ca5c743d20730d1a129a9ee04cbe854df7304b96',
+            'reference' => '4e28ee5d7ee044ebd9be0ab8852997e2bd034cce',
             'dev_requirement' => false,
         ),
         'guzzlehttp/promises' => array(
@@ -47,7 +47,7 @@
             'aliases' => array(
                 0 => '1.5.x-dev',
             ),
-            'reference' => '43453bfd44284ccb73d1beb16f3d30ea888097c1',
+            'reference' => 'a872440174bcdfd3392831de339656ac56122e26',
             'dev_requirement' => false,
         ),
         'guzzlehttp/psr7' => array(
@@ -58,7 +58,7 @@
             'aliases' => array(
                 0 => '2.4.x-dev',
             ),
-            'reference' => '13388f00956b1503577598873fffb5ae994b5737',
+            'reference' => '8f0a09ce19adcf28f25ff9d90e7329488501b363',
             'dev_requirement' => false,
         ),
         'myclabs/deep-copy' => array(
@@ -118,12 +118,12 @@
             'aliases' => array(
                 0 => '5.x-dev',
             ),
-            'reference' => '3032f88c16e0f659826caaba86eb5cceab4c7726',
+            'reference' => '407c40dcfb0250d015a6996c99db4bf3194aaca9',
             'dev_requirement' => true,
         ),
         'phpdocumentor/type-resolver' => array(
-            'pretty_version' => '1.x-dev',
-            'version' => '1.9999999.9999999.9999999-dev',
+            'pretty_version' => '1.6.1',
+            'version' => '1.6.1.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpdocumentor/type-resolver',
             'aliases' => array(),
@@ -147,7 +147,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/php-code-coverage',
             'aliases' => array(),
-            'reference' => '259eb8767efee94427c40bb978786e08ef8c799c',
+            'reference' => 'c450db218429fa4ff4af01f034c3fb54ea5b2600',
             'dev_requirement' => true,
         ),
         'phpunit/php-file-iterator' => array(
@@ -192,7 +192,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpunit/phpunit',
             'aliases' => array(),
-            'reference' => '53c54bf720feed441cf14018c9a48c52aabc0485',
+            'reference' => '83627ed9682037aa34a0d38a3307071393c85c1e',
             'dev_requirement' => true,
         ),
         'psr/http-client' => array(
@@ -364,12 +364,12 @@
             'dev_requirement' => true,
         ),
         'sebastian/recursion-context' => array(
-            'pretty_version' => '4.0.4',
-            'version' => '4.0.4.0',
+            'pretty_version' => '4.0.x-dev',
+            'version' => '4.0.9999999.9999999-dev',
             'type' => 'library',
             'install_path' => __DIR__ . '/../sebastian/recursion-context',
             'aliases' => array(),
-            'reference' => 'cd9d8cf3c5804de4341c283ed787f099f5506172',
+            'reference' => 'e3a614438af7f71eaa6fc8e406be8a3aa5c34595',
             'dev_requirement' => true,
         ),
         'sebastian/resource-operations' => array(

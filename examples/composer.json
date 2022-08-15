@@ -1,4 +1,9 @@
 {
+	"name": "blockfrost/phpsdk",
+	"description": "PHP api for Cardano/IPFS",
+	
+	"license": "Apache-2.0",
+	
 	"require" : {
 		"guzzlehttp/guzzle" : "^7.0"
 	},
@@ -14,6 +19,6 @@
 	,
 	 "scripts":
 	{
-    	"test": "./vendor/bin/phpunit  ../test"
+    	"test": "./vendor/bin/phpunit --bootstrap ../test/Boot.php ../test" 
 	}
 }

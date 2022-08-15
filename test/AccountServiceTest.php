@@ -1,6 +1,6 @@
 <?php
 
-//require_once __DIR__ . '/../examples/vendor/autoload.php';
+
 
 use PHPUnit\Framework\TestCase;
 use Blockfrost\Account\AccountsService;
@@ -14,8 +14,12 @@ final class AccountServiceTest extends TestCase
 {
     var $service;
 
-    public function setUp():void
+    public function setUp():void //TEST_ID_IPFS   TEST_ID_TESTNET
     {
+		//phpinfo();
+		//echo getenv(/*'TEST_ID_TESTNET'*/'TEST_ID_IPFS');
+		//var_dump(getenv('TEST_ID_TESTNET'));
+		
         $this->service = new AccountsService(AccountsService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     

@@ -6,19 +6,17 @@ on:
   pull_request:
     branches: [ "master" ]
 
-permissions:
-  contents: read
-
 jobs:
   build:
-
+   
     runs-on: ubuntu-latest
 
     steps:
     - uses: actions/checkout@v3
 
     - name: Validate composer.json and composer.lock
-      run: composer validate --strict
+      run: composer validate
+      working-directory: examples
 
     - name: Cache Composer packages
       id: composer-cache
@@ -29,15 +27,32 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
+    - name: Delete vendor obliterating permissions
+      run: rm -Rf vendor
+      working-directory: examples
+      
     - name: Install dependencies
       run: composer install --prefer-dist --no-progress
+      working-directory: examples
 
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    - name: Run test suite
+    - name: Test Env
+      shell: bash
+      run: |
+        echo "$TEST_ID_TESTNET"
+        echo "$TEST_ID_IPFS"
+        echo "$TEST"
       env:
-          TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
-          TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
-          
+        TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
+        TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
+        TEST: test
+        
+    - name: Run test suite
       run: composer run-script test
+      working-directory: examples
+      env:
+        TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
+        TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
+        TEST: test
