@@ -45,6 +45,5 @@ jobs:
       env:
         TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
         TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
-          
       run: composer run-script test
       working-directory: examples
