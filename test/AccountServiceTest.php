@@ -16,6 +16,7 @@ final class AccountServiceTest extends TestCase
 
     public function setUp():void
     {
+		phpinfo();
         $this->service = new AccountsService(AccountsService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     

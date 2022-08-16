@@ -48,5 +48,3 @@ jobs:
       run: composer run-script test
       working-directory: examples
       
-    - name: Ensure Secrets
-      run: echo "$TEST_ID_TESTNET"
