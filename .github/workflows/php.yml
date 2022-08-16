@@ -11,6 +11,9 @@ permissions:
 
 jobs:
   build:
+    env:
+      TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_MAINNET }}
+      TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
 
     runs-on: ubuntu-latest
 
@@ -42,9 +45,6 @@ jobs:
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
     - name: Run test suite
-      env:
-        TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_MAINNET }}
-        TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
       run: composer run-script test
       working-directory: examples
       
