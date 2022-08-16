@@ -19,6 +19,6 @@
 	,
 	 "scripts":
 	{
-    	"test": "./vendor/bin/phpunit --verbose --debug --bootstrap ../test/Boot.php ../test"
+    	"test": "./vendor/bin/phpunit --verbose --debug --bootstrap ../test/Boot.php ../test" 
 	}
 }
