@@ -41,20 +41,20 @@ jobs:
     # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
     # Docs: https://getcomposer.org/doc/articles/scripts.md
 
-    - name: Run test suite
-      run: composer run-script test
-      working-directory: examples
-      env:
-        TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
-        TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
-        TEST: test
-        
     - name: Test Env
       shell: bash
       run: |
         echo "$TEST_ID_TESTNET"
         echo "$TEST_ID_IPFS"
         echo "$TEST"
+      env:
+        TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
+        TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
+        TEST: test
+        
+    - name: Run test suite
+      run: composer run-script test
+      working-directory: examples
       env:
         TEST_ID_TESTNET: ${{ secrets.PROJECT_ID_TESTNET }}
         TEST_ID_IPFS: ${{ secrets.PROJECT_ID_IPFS }}
