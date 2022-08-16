@@ -30,7 +30,7 @@ jobs:
         restore-keys: |
           ${{ runner.os }}-php-
 
-    - name: Delete vendor
+    - name: Delete vendor obliterating permissions
       run: rm -Rf vendor
       working-directory: examples
       
