@@ -17,9 +17,9 @@ final class AccountServiceTest extends TestCase
     public function setUp():void //TEST_ID_IPFS   TEST_ID_TESTNET
     {
 		//phpinfo();
-		echo getenv(/*'TEST_ID_TESTNET'*/'TEST_ID_IPFS');
+		//echo getenv(/*'TEST_ID_TESTNET'*/'TEST_ID_IPFS');
 		
-        $this->service = new AccountsService(AccountsService::$NETWORK_CARDANO_TESTNET, getenv(/*'TEST_ID_TESTNET'*/'TEST_ID_IPFS') );
+        $this->service = new AccountsService(AccountsService::$NETWORK_CARDANO_TESTNET, getenv('TEST_ID_TESTNET') );
     }
     
   
