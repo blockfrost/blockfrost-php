@@ -126,7 +126,7 @@ final class AssetServiceTest extends TestCase
 
     public function test_getAsset_willThrowAPIException_onNullAsset():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAsset(null);
     }
@@ -175,7 +175,7 @@ final class AssetServiceTest extends TestCase
         
     public function test_getAssetHistory_willThrowAPIException_onNullAsset():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAssetHistory(null, new Page(5, 1));
             
@@ -228,7 +228,7 @@ final class AssetServiceTest extends TestCase
 
     public function test_getAssetTransaction_willThrowAPIException_onNullAsset():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAssetTransactions(null, new Page(5, 1));
     }
@@ -268,7 +268,7 @@ final class AssetServiceTest extends TestCase
         
     public function test_getAssetAddresses_willThrowAPIException_onNullAsset():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
 
         $this->service->getAssetByAddresses(null, new Page(5, 1));
     }
@@ -299,7 +299,7 @@ final class AssetServiceTest extends TestCase
 
     public function test_getPolicyAssets_willThrowAPIException_onNullPolicyId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAssetsByPolicy(null, new Page(5, 1) );
 

@@ -53,7 +53,7 @@ final class IPFSServiceTest extends TestCase
  
     public function test_add_willThrowIOException_WhenFileNull():void
     {
-        $this->expectExceptionMessage("must implement interface");
+        $this->expectExceptionMessage("StreamInterface");
         
         $this->service->addFile("FileIsNull", null);
     }

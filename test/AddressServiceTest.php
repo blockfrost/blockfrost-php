@@ -90,7 +90,7 @@ final class AddressServiceTest extends TestCase
 
     public function test_addressTransactions_willThrowAPIException_onNullAddress():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAddressTransactions(null, new Page(2, 1, "asc"), "8929261", "9999269");
         

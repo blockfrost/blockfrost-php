@@ -39,7 +39,7 @@ final class AccountServiceTest extends TestCase
  
     public function test_getAccountByStakeAddress_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string, null given");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccount(null);
     }
@@ -67,7 +67,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_history_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountHistory(null,  new Page(3, 1, "asc") );
     }
@@ -97,7 +97,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_rewardHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountRewardHistory(null, new Page(3, 1, "asc") );
     }
@@ -126,7 +126,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_delegationHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountDelegationHistory(null,  new Page(3, 1, "asc") );
     }
@@ -148,7 +148,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_registrationHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountRegistrationHistory(null, new Page(3, 1, "asc") );
     }
@@ -171,7 +171,7 @@ final class AccountServiceTest extends TestCase
   
     public function test_withdrawalHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountWithdrawalHistory(null, new Page(3, 1) );
         
@@ -194,7 +194,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_mirHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountMirHistory(null, new Page(3, 1) );
         
@@ -217,7 +217,7 @@ final class AccountServiceTest extends TestCase
     
     public function test_addresses_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountAssociatedAddresses(null, new Page(3, 1)  );
 
@@ -242,7 +242,7 @@ final class AccountServiceTest extends TestCase
 
     public function test_assets_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getAccountAssociatedAssets(null, new Page(3, 1) );
         
