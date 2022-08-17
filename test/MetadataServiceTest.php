@@ -119,7 +119,7 @@ final class MetadataServiceTest extends TestCase
         
     public function test_transactionMetadataCborForLabel_willThrowAPIException_onNullLabel():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
 
         $this->service->getTransactionMetadataAsCBOR(null);
     }
@@ -169,7 +169,7 @@ final class MetadataServiceTest extends TestCase
         
     public function test_transactionMetadataJsonForLabel_willThrowAPIException_onNullLabel():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getTransactionMetadataAsJSON(null, new Page(1, 1) );
 

@@ -173,7 +173,7 @@ final class EpochServiceTest extends TestCase
     
     public function test_activeStakesForEpochAndPool_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakeDistributionByPool(1, null, new Page(5, 1));
         

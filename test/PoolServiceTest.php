@@ -62,7 +62,7 @@ final class PoolServiceTest extends TestCase
 
     public function test_pool_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakePool(null);
     }
@@ -223,7 +223,7 @@ final class PoolServiceTest extends TestCase
         
     public function test_poolHistory_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakePoolHistory(null, new Page(101, 1));
     }
@@ -253,7 +253,7 @@ final class PoolServiceTest extends TestCase
         
     public function test_poolMetadata_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakePoolMetadata(null);
     }
@@ -278,7 +278,7 @@ final class PoolServiceTest extends TestCase
         
     public function test_poolRelays_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakePoolRelays(null);
     }
@@ -316,7 +316,7 @@ final class PoolServiceTest extends TestCase
         
     public function test_poolDelegators_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
     
         $this->service->getStakePoolRelays(null);
     }
@@ -348,7 +348,7 @@ final class PoolServiceTest extends TestCase
         
     public function test_poolBlocks_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakePoolRelays(null);
     }
@@ -396,7 +396,7 @@ final class PoolServiceTest extends TestCase
         
     public function test_poolUpdates_willThrowAPIException_onNullPoolId():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->getStakePoolRelays(null);
     }

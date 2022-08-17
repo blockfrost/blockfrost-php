@@ -196,7 +196,7 @@ final class BlockServiceTest extends TestCase
 
     public function test_nextBlocks_willThrowAPIException_onNullHash():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->listNextBlocks(null, new Page(5, 1));
     }
@@ -243,7 +243,7 @@ final class BlockServiceTest extends TestCase
         
     public function test_previousBlocks_willThrowAPIException_onNullHash():void
     {
-        $this->expectExceptionMessage("must be of the type string");
+        $this->expectExceptionMessage("type string, null given");
         
         $this->service->listPreviousBlocks(null, new Page(5, 1));
     }
