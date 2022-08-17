@@ -48,7 +48,7 @@ final class PoolServiceTest extends TestCase
         $expectedPool->reward_account = "stake_test1up32f2hrv5ytqk8ad6e4apss5zrrjjlrkjhrksypn5g08fqrqf9gr";
         $expectedPool->owners = ["stake_test1up32f2hrv5ytqk8ad6e4apss5zrrjjlrkjhrksypn5g08fqrqf9gr"];
         $expectedPool->registration = ["78925fad4cce75a22a675ed5e175ecfd40baf7ac51c487c5cdb0fde9a02afa64"];
-        $expectedPool->retirement["fd8a94eaa104d73b177ff092f959c9ae376bd9fb464a57cfc85664c4823011ed"];
+        $expectedPool->retirement = ["fd8a94eaa104d73b177ff092f959c9ae376bd9fb464a57cfc85664c4823011ed"];
                     
 
         $pool = $this->service->getStakePool("pool126zlx7728y7xs08s8epg9qp393kyafy9rzr89g4qkvv4cv93zem");
