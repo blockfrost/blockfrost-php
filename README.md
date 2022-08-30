@@ -1,3 +1,6 @@
+[![Build status](https://github.com/blockfrost/blockfrost-php/actions/workflows/php.yml/badge.svg)](https://github.com/blockfrost/blockfrost-php/actions/workflows/php.yml)
+
+
 <img src="https://blockfrost.io/images/logo.svg" width="250" align="right" height="90">
 
 # blockfrost-php
