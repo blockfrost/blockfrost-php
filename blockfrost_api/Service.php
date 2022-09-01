@@ -29,6 +29,8 @@ abstract class Service
     public static $NETWORK_IPFS            = "https://ipfs.blockfrost.io/api/v0";
     public static $NETWORK_CARDANO_MAINNET = "https://cardano-mainnet.blockfrost.io/api/v0";
     public static $NETWORK_CARDANO_TESTNET = "https://cardano-testnet.blockfrost.io/api/v0";
+	public static $NETWORK_CARDANO_PREPROD = "https://cardano-preprod.blockfrost.io/api/v0";
+	public static $NETWORK_CARDANO_PREVIEW = "https://cardano-preview.blockfrost.io/api/v0";
     
     
     
