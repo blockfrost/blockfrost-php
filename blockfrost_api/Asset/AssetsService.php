@@ -82,7 +82,7 @@ class AssetsService extends Service
     {
         $resp = $this->get("/assets/policy/{$policy_id}", $page);
         
-        return $this->resp_from_json($resp, ['array', '\Blockfrost\Asset\AssetAddress']);
+        return $this->resp_from_json($resp, ['array', '\Blockfrost\Asset\Asset']);
     }
     
     

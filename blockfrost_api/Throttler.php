@@ -41,7 +41,7 @@ class Throttler
     {
         $sesSinceLastCall = Throttler::secsNow() - $this->lastRequestTime;
             
-        $cooledOffRequests = $sesSinceLastCall * Throttler::BURST_COOLDOWN;
+        $cooledOffRequests = $sesSinceLastCall * Throttler::BURST_COOLDOWN;	
          
         $this->requestCount = $this->requestCount > $cooledOffRequests ? $this->requestCount - $cooledOffRequests : 0;
 
